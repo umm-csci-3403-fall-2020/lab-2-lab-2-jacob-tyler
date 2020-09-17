@@ -2,12 +2,18 @@
 
 #include "palindrome.h"
 
+char *result;
+
 void is_palindrome(char const *str) {
-  ASSERT_STREQ(palindrome(str), "Yes");
+  result = palindrome(str);
+  ASSERT_STREQ(result, "Yes");
+  free(result);
 }
 
 void not_palindrome(char const *str) {
-  ASSERT_STREQ(palindrome(str), "No");
+  result = palindrome(str);
+  ASSERT_STREQ(result, "No");
+  free(result);
 }
 
 TEST(Palindrome, HandlesEmptyString) {
