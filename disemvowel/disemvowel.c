@@ -30,10 +30,9 @@ char *disemvowel(char *str) {
   int length;
   int i;
   int newLength = 0;
+  int location = 0;
   length = strlen(str);
-  //char *result;
-  //char *tmp;
-  //tmp = (char*) calloc(50000, sizeof(char));
+  char *result;
 
   //Checks to see if the string contains anything.
   //If it doesn't contain anything, return the string.
@@ -47,30 +46,32 @@ char *disemvowel(char *str) {
     newLength++;
     }
   }
-//printf("%d\n", newLength);
-//return str;
 
   //The actual disemvowel process. It will loop
   //through the given string, see if that character
-  //is a vowel, and add it to tmp if it's not
+  //is a vowel, and add it to result if it's not
   //a vowel.
+  result = (char*) calloc(newLength+1, sizeof(char));
+
   for (i=0; i<length; i++) {
+    //printf("Is %d a vowel? %d \n", str[i], notAVowel(str[i])==1);
     if (notAVowel(str[i])==1) {
-      tmp[x] = str[i];
-      x++;
+      result[location] = str[i];
+      location++;
+	//printf("result: %d \nstr: %d\n", result[location], str[i]);
     }
   }
+  result[newLength+1] = '\0';
 
-  //Creates a new array named result that is
-  //significantly smaller than tmp, but contains
-  //the same amount of data.
-  result = (char*) calloc(x+1, sizeof(char));
-  for (i=0; i<=x; i++) {
-    result[i] = tmp[i];
+/*
+  for (i=0; i<length; i++) {
+  printf(" %d ", str[i]);
   }
-  result[x+1] = '\0';
-
-  free(tmp);
+  printf("\n");
+  for (i=0; i<newLength; i++) {
+  printf(" %d ", result[i]);
+  }
+*/
   return result;
 }
 
