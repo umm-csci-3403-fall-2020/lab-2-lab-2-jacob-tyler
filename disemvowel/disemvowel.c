@@ -47,31 +47,20 @@ char *disemvowel(char *str) {
     }
   }
 
-  //The actual disemvowel process. It will loop
-  //through the given string, see if that character
-  //is a vowel, and add it to result if it's not
-  //a vowel.
+  //The actual disemvowel process. First, it creates
+  //a new array called result that is based off of
+  //newLength. It will then loop through the given string,
+  //see if that character is a vowel, and add it to
+  //result if it's not a vowel.
   result = (char*) calloc(newLength+1, sizeof(char));
 
   for (i=0; i<length; i++) {
-    //printf("Is %d a vowel? %d \n", str[i], notAVowel(str[i])==1);
     if (notAVowel(str[i])==1) {
       result[location] = str[i];
       location++;
-	//printf("result: %d \nstr: %d\n", result[location], str[i]);
     }
   }
-  result[newLength+1] = '\0';
 
-/*
-  for (i=0; i<length; i++) {
-  printf(" %d ", str[i]);
-  }
-  printf("\n");
-  for (i=0; i<newLength; i++) {
-  printf(" %d ", result[i]);
-  }
-*/
   return result;
 }
 
